@@ -1,25 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Refine } from '@pankod/refine';
+import routerProvider from "@pankod/refine-react-router-v6";
+import CustomDataProvider from './services/data-provider';
+import CustomAuthProvider from './services/auth-provider';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Refine
+    routerProvider={routerProvider}
+    dataProvider={CustomDataProvider('https://localhost:5000')}
+    authProvider={CustomAuthProvider()}
+    ></Refine>
   );
 }
 
